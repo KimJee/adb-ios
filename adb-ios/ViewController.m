@@ -50,6 +50,7 @@
     }];
 }
 
+// Installs the APK to the target device
 -(IBAction)installApkBtn:(id)sender
 {
     NSString *apkPath = [[NSBundle mainBundle] pathForResource:@"Term" ofType:@"apk"];
@@ -58,7 +59,7 @@
     }];
 }
 
-
+// Uninstalls the APK
 -(IBAction)uninstallApkBtn:(id)sender
 {
     [_adb uninstallApk:@"jackpal.androidterm" didResponse:^(BOOL succ, NSString *result) {
@@ -74,7 +75,7 @@
     }];
 }
 
-
+// Disconnects the socket
 -(IBAction)disconnect:(id)sender
 {
     [_adb disconnect:@IP didResponse:^(BOOL succ, NSString *result) {
@@ -84,6 +85,7 @@
 }
 
 
+// An example of a shell command via this library
 -(IBAction)ps:(id)sender
 {
     [_adb shell:@"pm list packages" didResponse:^(BOOL succ, NSString *result) {
